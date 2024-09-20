@@ -412,6 +412,7 @@ button[type="submit"] {
     border: none;
     outline: none;
     margin-top:14vh;
+    z-index:3;
 }
 
 /* Input field styles */

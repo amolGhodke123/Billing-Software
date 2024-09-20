@@ -1,127 +1,113 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import './Navbar.css'; 
 
-import { useState } from 'react';
-import SignUp from '../LoginPage/SignUp';
-//import logo from './images.png';
-//import SignUp from './SignUp';
+const Home = () => {
+    const [isNavbarVisible, setIsNavbarVisible] = useState(false);
+    const [isBodyPadded, setIsBodyPadded] = useState(false);
+    const [isHeaderPadded, setIsHeaderPadded] = useState(false);
+    const [activeLink, setActiveLink] = useState('');
 
-
-function Home() {
-    const [isOpen, setIsOpen] = useState(true);
-    const [isLogin, setIsLogin] = useState(true);
-
-    const togglePopup = () => {
-        setIsOpen(!isOpen);
+    const toggleNavbar = () => {
+        setIsNavbarVisible(!isNavbarVisible);
+        setIsBodyPadded(!isBodyPadded);
+        setIsHeaderPadded(!isHeaderPadded);
     };
-    const handleClick = () => {
-        setIsLogin(false);
+
+    const handleLinkClick = (linkName) => {
+        setActiveLink(linkName);
     };
+
+    useEffect(() => {
+        // Apply class to body and header based on the state
+        const body = document.getElementById('body-pd');
+        const header = document.getElementById('header');
+
+        if (isBodyPadded) body.classList.add('body-pd');
+        else body.classList.remove('body-pd');
+
+        if (isHeaderPadded) header.classList.add('body-pd');
+        else header.classList.remove('body-pd');
+    }, [isBodyPadded, isHeaderPadded]);
 
     return (
-        <>
-            {isLogin ? < div className="overlay">
-            <h1>HOME</h1>
-                <div className="popup">
-                    {/*<button className="close" onClick={() => console.log('Close Popup')}>*/}
-                    {/*    &times;*/}
-                    {/*</button>*/}
-                    <div className="form-container">
-                        <div className="form-section">
-                            <img src={{/*logo*/}} alt="Logo" className="popup-logo" /> {/* Logo */}
-                            <div className="popup-title">Sign in here</div>
-                            <div className="popup-title1">to access Invoice</div>
-                            <form>
-                                <div className="form-group">
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        placeholder="Email address or mobile number"
-                                        className="input-field"
-                                        required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <input
-                                        type="password"
-                                        id="password"
-                                        placeholder="Password"
-                                        className="input-field"
-                                        required
-                                    />
-                                </div>
-                                <button type="submit" className="login-btn">
-                                    Login
-                                </button>
-                                <div className="popup-title2">Don't have a Zoho account ? <span className="highlight-text" onClick={handleClick}>Sign up now</span></div>
-                            </form>
-                        </div>
-                        <div className="divider" />
-                        <div className="form-section">
-                            <form>
-                                <div className="form-section right-section">
-                                    <img src="/billing4.svg" alt="Informative" className="info-image" /> {/* Add another image */}
-                                    <p className="popup-title">MFA - for all accounts</p>
-
-                                    <p className="popup-title3">Learn more about our features and how they can help you manage your </p>
-                                    <button className="learn-more-btn">
-                                        Learn More
-                                    </button>
-                                </div>
-                            </form>
+        <div id="body-pd" className={isNavbarVisible ? 'body-pd' : ''}>
+            <header className="header" id="header">
+                <div className="header_toggle" onClick={toggleNavbar}>
+                    <i className={isNavbarVisible ? 'bx bx-x' : 'bx bx-menu'} id="header-toggle"></i>
+                </div>
+                <div className="header_img">
+                    <img src="https://i.imgur.com/hczKIze.jpg" alt="Profile" />
+                </div>
+            </header>
+            <div className={`l-navbar ${isNavbarVisible ? 'show' : ''}`} id="nav-bar">
+                <nav className="nav">
+                    <div>
+                        <a href="#" className="nav_logo">
+                            <i className="bx bx-layer nav_logo-icon"></i>
+                            <span className="nav_logo-name">BBBootstrap</span>
+                        </a>
+                        <div className="nav_list">
+                            <a
+                                href="#"
+                                className={`nav_link ${activeLink === 'dashboard' ? 'active' : ''}`}
+                                onClick={() => handleLinkClick('dashboard')}
+                            >
+                                <i className="bx bx-grid-alt nav_icon"></i>
+                                <span className="nav_name">Dashboard</span>
+                            </a>
+                            <a
+                                href="#"
+                                className={`nav_link ${activeLink === 'users' ? 'active' : ''}`}
+                                onClick={() => handleLinkClick('users')}
+                            >
+                                <i className="bx bx-user nav_icon"></i>
+                                <span className="nav_name">Users</span>
+                            </a>
+                            <a
+                                href="#"
+                                className={`nav_link ${activeLink === 'messages' ? 'active' : ''}`}
+                                onClick={() => handleLinkClick('messages')}
+                            >
+                                <i className="bx bx-message-square-detail nav_icon"></i>
+                                <span className="nav_name">Messages</span>
+                            </a>
+                            <a
+                                href="#"
+                                className={`nav_link ${activeLink === 'bookmark' ? 'active' : ''}`}
+                                onClick={() => handleLinkClick('bookmark')}
+                            >
+                                <i className="bx bx-bookmark nav_icon"></i>
+                                <span className="nav_name">Bookmark</span>
+                            </a>
+                            <a
+                                href="#"
+                                className={`nav_link ${activeLink === 'files' ? 'active' : ''}`}
+                                onClick={() => handleLinkClick('files')}
+                            >
+                                <i className="bx bx-folder nav_icon"></i>
+                                <span className="nav_name">Files</span>
+                            </a>
+                            <a
+                                href="#"
+                                className={`nav_link ${activeLink === 'stats' ? 'active' : ''}`}
+                                onClick={() => handleLinkClick('stats')}
+                            >
+                                <i className="bx bx-bar-chart-alt-2 nav_icon"></i>
+                                <span className="nav_name">Stats</span>
+                            </a>
                         </div>
                     </div>
-                </div>
-            </div> : <SignUp onSignUpClick={setIsLogin} />}
-
-
-
-            {
-                //<div className="App">
-                //<button className="open-popup-btn" onClick={togglePopup}>
-                //    Open Login Popup
-                //</button>
-
-                //{isOpen && (
-                //    <div className="popup-overlay">
-                //        <div className="popup">
-                //            <img src={logo} alt="Logo" className="popup-logo" /> {/* Logo */}
-                //            <div className="popup-title">Sign in</div>
-                //            <div className="popup-title1">to access Invoice</div>
-                //            <form>
-                //                <div className="form-group">
-                //                    <input
-                //                        type="email"
-                //                        id="email"
-                //                        placeholder="Email address or mobile number"
-                //                        className="input-field"
-                //                        required
-                //                    />
-                //                </div>
-                //                <div className="form-group">
-                //                    <input
-                //                        type="password"
-                //                        id="password"
-                //                        placeholder="Password"
-                //                        className="input-field"
-                //                        required
-                //                    />
-                //                </div>
-                //                <button type="submit" className="login-btn">
-                //                    Login
-                //                </button>
-                //                <div className="popup-title2">Don't have a Zoho account ? <span className="highlight-text">Sign up now</span></div>
-                //            </form>
-                //            {/*<button className="close-popup-btn" onClick={togglePopup}>*/}
-                //            {/*    Close*/}
-                //            {/*</button>*/}
-                //        </div>
-                //    </div>
-                //)}
-                //</div>
-
-            }
-        </>
+                    <a href="#" className="nav_link">
+                        <i className="bx bx-log-out nav_icon"></i>
+                        <span className="nav_name">SignOut</span>
+                    </a>
+                </nav>
+            </div>
+            <div className="height-100 bg-light">
+                <h4>Main Components</h4>
+            </div>
+        </div>
     );
-}
+};
 
 export default Home;
