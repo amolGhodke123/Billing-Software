@@ -1,38 +1,519 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400&display=swap'); /* Importing a similar font like Merriweather */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(240, 240, 240, 0.9); /* Light gray background with slight transparency */
+    display: flex;
+    justify-content: center; /* Horizontally center the popup */
+    align-items: center; /* Vertically center the popup */
+    z-index: 1000;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Popup container */
+.popup {
+    background-color: white;
+    padding: 30px;
+    width: 800px; /* Width of the popup */
+    height: auto;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Added shadow effect */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: scale(4); /* Zooms the popup to 120% */
+    transition: transform 0.3s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Close button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: black;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Container for login and register forms */
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Stretch to ensure equal height of sections */
+    gap: 40px; /* Increased gap between sections */
+    width: 100%; /* Make container fill the popup */
 }
 
-.App-link {
-  color: #61dafb;
+/* Each form section */
+.form-section {
+    width: 121%; /* Adjust width for both forms */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Align forms vertically centered */
+    align-items: flex-start;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Styling for form elements */
+/*input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }*/
+
+/* Vertical divider */
+.divider {
+    width: 1px; /* Thickness of vertical line */
+    background-color: #F4F4F4; /* Blue color for divider */
+    height: auto; /* Automatic height adjustment */
+    flex-shrink: 0; /* Ensure it doesn't shrink */
+}
+
+
+
+
+/* Title Styles */
+.popup-title {
+    font-family: 'Merriweather', Georgia, serif; 
+    font-size: 24px; 
+    text-align: left;
+    margin-bottom: 6px;
+}
+
+.popup-title1 {
+    font-family: 'Merriweather', Georgia, serif;  
+    font-size: 14px;  
+    text-align: left;  
+    margin-bottom: 20px;
+}
+
+.popup-title3{
+    font-family: 'Merriweather', Georgia, serif;  
+    font-size: 14px;  
+    text-align: center;  
+    margin-bottom: 20px;
+    width:50%;
+}
+.popup-title2 {
+    font-family: 'Merriweather', Georgia, serif;  
+    font-size: 11px;  
+    color: #555555;  
+    background-color: rgba(0, 0, 0, 0);  
+    margin-top: 10px;
+    text-align: left;  
+}
+.popup-titleS {
+    font-family: 'Merriweather', Georgia, serif;
+    font-size: 60px;
+    color: #555555;
+    background-color: rgba(0, 0, 0, 0);
+    margin-top: 10px;
+    text-align: left;
+    padding: 26px;
+}
+
+.highlight-text {
+    color: #159AFF;
+    font-size: 16px;
+    cursor: pointer;
+}
+    .highlight-text:hover {
+        color: #0056b3; /* Change color on hover */
+        text-decoration: none; /* Remove underline on hover */
+    }
+.input-field {
+    font-family: 'Merriweather', Georgia;
+    color: #666;
+    font-size: 12px;
+    text-align: left;
+    border: none;
+    outline: none;
+}
+.input-field:focus {
+    /*outline: none;*/
+    /*border-color: transparent;*/ /* If border color is contributing to the effect */
+}
+
+
+/* App Styles */
+/*.App {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.open-popup-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}*/
+
+/* Popup Overlay */
+/*.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}*/
+
+/* Popup Styles */
+/*.popup {
+    background-color: white;
+    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}*/
+
+.popup-logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-group input {
+        width: 133%;
+        padding: 8px;
+        border-radius: 4px;
+        background: #F8F8F8;
+        /*border: 0.2px solid #ccc;*/
+    }
+
+.login-btn {
+    width: 140%;
+    padding: 10px;
+    background-color: #159AFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.right-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Image in the right section */
+.info-image {
+    width: 230px; /* Adjust image size */
+    margin-bottom: 20px;
+}
+
+/* Text below the image */
+.info-text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Learn More button */
+.learn-more-btn {
+    padding: 10px 20px;
+    background-color: #ECF7FE;
+    color: #169FFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .learn-more-btn:hover {
+        background-color: #ECF7FE;
+    }
+
+/*.close-popup-btn {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}*/
+
+
+
+.full-screen-background {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* Make sure the image covers the full background */
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*object-fit: cover;*/ /* Ensure the image covers the container */
+    z-index: -1; /* Place the image behind other content */
+}
+
+
+/* Overlay for dimming background */
+.overlay1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*background-color: rgba(0, 0, 0, 0.5);*/ /* Semi-transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Popup container with small image above */
+.popup-container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Small image (above popup) */
+.small-logo {
+    width: 300%; /* Adjust the size of the small logo */
+    margin-bottom: 630%; /* Space between logo and popup */
+    z-index:1;
+    /*margin-top:10px;*/
+}
+
+/* Small image (above popup) */
+/*.big-text {*/
+    /*width: 350%;*/ /* Adjust the size of the small logo */
+    /*margin-bottom: 600%;*/ /* Space between logo and popup */
+    /*z-index:1;
+    font-size:50px;*/
+    /*margin-top:10px;*/
+/*}*/
+
+/* Popup styling */
+.popup1 {
+    background-color: white;
+    padding: 40px; /* Increased padding */
+    width: 1400px; /* Increased width */
+    max-width: 90%; /* Ensures responsiveness */
+    height: 1000px; /* Increased height */
+    max-height: 90%; /* Ensures responsiveness */
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Increased shadow effect */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+    /* Popup heading */
+    .popup h2 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+/* Input fields */
+.input-field1 {
+
+    width: 500%;
+    /*padding: 20px;*/
+    /*margin: 10px 0;*/
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    justify-content:center;
+}
+
+/* Signup button */
+.signup-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+    .signup-btn:hover {
+        background-color: #0056b3;
+    }
+.form-group1{
+    margin-bottom: 15px;
+    text-align: center;
+    justify-content:center;
+}
+
+
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%; /* Responsive width */
+    max-width: 1500px; /* Increased maximum width */
+    height: auto; /* Allow height to adjust based on content */
+    max-height: 90vh; /* Maximum height based on viewport */
+    overflow-y: auto; /* Enable scrolling if content exceeds max height */
+    padding: 80px; /* Increased padding for more space */
+    background-color: #F8F8F8;
+    border-radius: 18px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); /* Increased shadow effect */
+    border: none;
+    outline: none;
+    margin-top:14vh;
+}
+
+/* Input field styles */
+.input-fieldS {
+    margin: 20px 0;
+    padding: 50px;
+    width: 100%; /* Full width */
+    box-sizing: border-box; /* Include padding in width */
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 4px; /* Rounded corners */
+    outline: none; /* Remove outline */
+    font-size: 70px;
+    height:auto;
+}
+
+/* Button styles */
+.signup-btnS, .close-btnS {
+    padding: 50px 15px;
+    margin-top: 10px;
+    height:auto;
+    color: white; /* White text */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor */
+    width: 100%; /* Full width */
+    border-radius: 14px; /* Rounded corners */
+}
+
+.signup-btnS {
+    background-color: #0075FF; /* Green background */
+    font-size: 60px;
+    font-family: 'Merriweather', Aerial;
+}
+
+.close-btnS {
+    background-color: #f44336; /* Red background */
+}
+
+/* Button hover effects */
+.signup-btnS:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.close-btnS:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 600px) {
+    .modal {
+        width: 95%; /* Adjust width for smaller screens */
+        padding: 40px; /* Reduce padding */
+    }
+
+    .input-fieldS {
+        padding: 8px; /* Adjust input padding */
+    }
+
+    .signup-btnS, .close-btnS {
+        padding: 8px; /* Adjust button padding */
+    }
+}
+
+.input-fieldS::placeholder {
+    font-size: 60px; /* Match this with the input font size */
+    font-family: 'Merriweather', sans-serif;
+    /*color: #999;*/ /* Optional: change color for better visibility */
+}
+
+.custom-div {
+    font-family: 'Arial', sans-serif; /* Replace with your desired font */
+    font-size: 50px;
+    color: #848484;
+    color: RGB(132, 132, 132);
+    background-color: #000000;
+    background-color: RGBA(0, 0, 0, 0);
+    padding:19px;
+}
+.custom-div1 {
+    font-family: 'Arial', sans-serif; /* Replace with your desired font */
+    font-size: 50px;
+    color: black;
+    color: black;
+    background-color: #000000;
+    background-color: RGBA(0, 0, 0, 0);
+    padding:19px;
+    margin-bottom:25px;
+}
+
+
+.highlight{
+    color: #159AFF;
+    /*font-size: 16px;*/
+    cursor: pointer;
+}
+
+    .highlight:hover {
+        color: #0056b3; /* Change color on hover */
+        text-decoration: none; /* Remove underline on hover */
+    }
+/* Add some styles to ensure visibility */
+input[type="checkbox"] {
+    width: 50px; /* Set a specific width */
+    height: 50px; /* Set a specific height */
+    margin-right:20px;
 }
