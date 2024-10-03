@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400&display=swap'); /* Importing a similar font like Merriweather */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 
 .overlay {
     position: fixed;
@@ -16,7 +18,7 @@
 /* Popup container */
 .popup {
     background-color: white;
-    padding: 30px;
+    padding: 40px;
     width: 800px; /* Width of the popup */
     height: auto;
     border-radius: 10px;
@@ -26,7 +28,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transform: scale(4); /* Zooms the popup to 120% */
+    /*transform: scale(4);*/ /* Zooms the popup to 120% */
     transition: transform 0.3s ease;
 }
 
@@ -88,7 +90,7 @@ button[type="submit"] {
 /* Vertical divider */
 .divider {
     width: 1px; /* Thickness of vertical line */
-    background-color: #F4F4F4; /* Blue color for divider */
+    background-color: #9f9999; /* Blue color for divider */
     height: auto; /* Automatic height adjustment */
     flex-shrink: 0; /* Ensure it doesn't shrink */
 }
@@ -128,12 +130,18 @@ button[type="submit"] {
 }
 .popup-titleS {
     font-family: 'Merriweather', Georgia, serif;
-    font-size: 60px;
+    font-size: 18px;
     color: #555555;
     background-color: rgba(0, 0, 0, 0);
-    margin-top: 10px;
-    text-align: left;
+    margin-top: 2px;
+    text-align: center;
     padding: 26px;
+}
+.popup-titleN{
+    font-family: 'Merriweather', Georgia, serif;
+    font-size: 14px;
+/*    text-align: left;
+    margin-bottom: 20px;*/
 }
 
 .highlight-text {
@@ -202,6 +210,7 @@ button[type="submit"] {
 .popup-logo {
     width: 100px;
     margin-bottom: 20px;
+    
 }
 
 
@@ -217,7 +226,7 @@ button[type="submit"] {
     }
 
     .form-group input {
-        width: 133%;
+        width: 140%;
         padding: 8px;
         border-radius: 4px;
         background: #F8F8F8;
@@ -277,7 +286,50 @@ button[type="submit"] {
     border-radius: 5px;
     cursor: pointer;
 }*/
+@media (max-width: 800px) {
+    .popup {
+        padding: 15px; /* Less padding */
+        margin-top:20%;
+    }
 
+    .form-container {
+        flex-direction: column; /* Stack forms vertically */
+        overflow-y: auto;
+        margin-right:50%;
+
+    }
+    .overlay{
+        overflow-y:auto;
+        overflow-x:hidden;
+        align-items:center;
+        width:124%;
+    }
+    *,.overlay{
+        /*overflow-x:hidden;*/
+    }
+    .form-section {
+        align-items: center;
+    }
+    .LoginIcon {
+        /*align-items: center;*/
+        display: none; /* Hide divider on small screens */
+      
+    }
+
+
+    .divider {
+        display: none; /* Hide divider on small screens */
+    }
+
+    .popup-logo {
+    
+        margin-top: 20%;
+
+    }
+    .learn-more-btn {
+        margin-bottom:20px;
+    }
+    }
 
 
 .full-screen-background {
@@ -322,8 +374,8 @@ button[type="submit"] {
 
 /* Small image (above popup) */
 .small-logo {
-    width: 300%; /* Adjust the size of the small logo */
-    margin-bottom: 630%; /* Space between logo and popup */
+    width: 90%; /* Adjust the size of the small logo */
+    margin-bottom: 490px; /* Space between logo and popup */
     z-index:1;
     /*margin-top:10px;*/
 }
@@ -397,15 +449,15 @@ button[type="submit"] {
 
 .modal {
     position: absolute;
-    top: 50%;
+    top: 56%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 90%; /* Responsive width */
-    max-width: 1500px; /* Increased maximum width */
+    width: 36%; /* Responsive width */
+    max-width: 700px; /* Increased maximum width */
     height: auto; /* Allow height to adjust based on content */
-    max-height: 90vh; /* Maximum height based on viewport */
-    overflow-y: auto; /* Enable scrolling if content exceeds max height */
-    padding: 80px; /* Increased padding for more space */
+    max-height: 88vh; /* Maximum height based on viewport */
+    /*overflow-y: auto;*/ /* Enable scrolling if content exceeds max height */
+    padding: 40px; /* Increased padding for more space */
     background-color: #F8F8F8;
     border-radius: 18px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); /* Increased shadow effect */
@@ -417,32 +469,37 @@ button[type="submit"] {
 
 /* Input field styles */
 .input-fieldS {
-    margin: 20px 0;
-    padding: 50px;
-    width: 100%; /* Full width */
+    margin: 8px 0;
+    padding-bottom: 7px;
+    padding-left:15px;
+    width: 105%; /* Full width */
     box-sizing: border-box; /* Include padding in width */
     border: 1px solid #ccc; /* Add border */
-    border-radius: 4px; /* Rounded corners */
+    border-radius: 10px; /* Rounded corners */
     outline: none; /* Remove outline */
-    font-size: 70px;
-    height:auto;
+    font-size: 16px;
+    height: auto;
+    margin-right:10px;
+    padding:12px;
+    /*text-align: center;*/
 }
 
 /* Button styles */
 .signup-btnS, .close-btnS {
-    padding: 50px 15px;
-    margin-top: 10px;
+    padding: 13px 10px;
+    margin-top: 2px;
     height:auto;
     color: white; /* White text */
     border: none; /* No border */
     cursor: pointer; /* Pointer cursor */
-    width: 100%; /* Full width */
-    border-radius: 14px; /* Rounded corners */
+    width: 105%; /* Full width */
+    border-radius: 10px; /* Rounded corners */
+    margin-bottom:-13px !important;
 }
 
 .signup-btnS {
     background-color: #0075FF; /* Green background */
-    font-size: 60px;
+    font-size: 18px;
     font-family: 'Merriweather', Aerial;
 }
 
@@ -460,45 +517,47 @@ button[type="submit"] {
 }
 
 /* Media Queries for responsiveness */
-@media (max-width: 600px) {
+/*@media (max-width: 600px) {
     .modal {
-        width: 95%; /* Adjust width for smaller screens */
-        padding: 40px; /* Reduce padding */
-    }
+        width: 95%;*/ /* Adjust width for smaller screens */
+        /*padding: 40px;*/ /* Reduce padding */
+    /*}
 
     .input-fieldS {
-        padding: 8px; /* Adjust input padding */
-    }
+        padding: 8px;*/ /* Adjust input padding */
+    /*}
 
     .signup-btnS, .close-btnS {
-        padding: 8px; /* Adjust button padding */
-    }
-}
+        padding: 8px;*/ /* Adjust button padding */
+    /*}
+}*/
 
 .input-fieldS::placeholder {
-    font-size: 60px; /* Match this with the input font size */
+    font-size: 16px; /* Match this with the input font size */
     font-family: 'Merriweather', sans-serif;
+
+ 
     /*color: #999;*/ /* Optional: change color for better visibility */
 }
 
 .custom-div {
     font-family: 'Arial', sans-serif; /* Replace with your desired font */
-    font-size: 50px;
+    font-size: 18px;
     color: #848484;
     color: RGB(132, 132, 132);
     background-color: #000000;
     background-color: RGBA(0, 0, 0, 0);
-    padding:19px;
+    padding:12px;
 }
 .custom-div1 {
     font-family: 'Arial', sans-serif; /* Replace with your desired font */
-    font-size: 50px;
+    font-size: 16px;
     color: black;
     color: black;
     background-color: #000000;
     background-color: RGBA(0, 0, 0, 0);
-    padding:19px;
-    margin-bottom:25px;
+    padding:8px;
+    margin-bottom:5px;
 }
 
 
@@ -511,10 +570,726 @@ button[type="submit"] {
     .highlight:hover {
         color: #0056b3; /* Change color on hover */
         text-decoration: none; /* Remove underline on hover */
+        font-weight: bold; /* Makes text bold */
+        /*text-decoration: underline;*/
     }
 /* Add some styles to ensure visibility */
 input[type="checkbox"] {
-    width: 50px; /* Set a specific width */
-    height: 50px; /* Set a specific height */
-    margin-right:20px;
+    width: 18px; /* Set a specific width */
+    height: 18px; /* Set a specific height */
+    margin-right:10px;
 }
+
+
+@media (max-width: 982px) {
+    .modal {
+        width: 50%;
+        /*max-height: 100vh;*/
+    }
+}
+
+@media (max-width: 510px) {
+    .modal{
+        width:89%;
+        max-height:100vh;
+    }
+    .small-logo {
+        width: 70%;
+    }
+    .input-fieldS::placeholder {
+        font-size: 15px; /* Match this with the input font size */
+    }
+    /*.popup-container1 {
+        padding: 10px;
+    }*/
+
+    .input-fieldS {
+        padding: 15px;
+    }
+
+    /*.signup-btnS {
+        padding: 8px;
+        font-size: 14px;*/ /* Adjust button font size */
+    /*}*/
+}
+
+.custom-submenu {
+    color: #ffffff;
+    background-color: #343a40;
+}
+
+.custom-menu-item {
+    color: #ffffff;
+    background-color: #495057;
+}
+
+    .custom-menu-item:hover, .custom-submenu:hover {
+        background-color: #6c757d;
+        cursor: pointer;
+    }
+
+/* Sidebar styling */
+.sidebar-container {
+    height: 100vh; /* Full height of the viewport */
+    display: flex;
+}
+
+.custom-sidebar {
+    background-color: #212529;
+    width: 200px; /* Increased width */
+}
+
+/* Adjust the sidebar for responsiveness */
+@media (max-width: 768px) {
+    .custom-sidebar {
+        width: 200px; /* Smaller width for mobile */
+    }
+}
+
+/* Menu item icon styling */
+.menu-item-icon {
+    margin-right: 10px;
+}
+
+    /* Custom icon size */
+    .menu-item-icon svg {
+        font-size: 9px;
+    }
+/*
+
+* {
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background: #f5f6fa;
+}
+
+.wrapper .sidebar {
+    background: rgb(5, 68, 104);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 617px;
+    height: 100%;
+    padding: 20px 0;
+    transition: all 0.5s ease;
+}
+
+    .wrapper .sidebar ul li a {
+        display: block;
+        padding: 13px 30px;
+        border-bottom: 1px solid #10558d;
+        color: rgb(241, 237, 237);
+        font-size: 16px;
+        position: relative;
+    }
+
+        .wrapper .sidebar ul li a .icon {
+            color: #dee4ec;
+            width: 30px;
+            display: inline-block;
+        }
+
+        .wrapper .sidebar ul li a:hover,
+        .wrapper .sidebar ul li a.active {
+            color: #0c7db1;
+            background: white;
+            border-right: 2px solid rgb(5, 68, 104);
+        }
+
+            .wrapper .sidebar ul li a:hover .icon,
+            .wrapper .sidebar ul li a.active .icon {
+                color: #0c7db1;
+            }
+
+            .wrapper .sidebar ul li a:hover:before,
+            .wrapper .sidebar ul li a.active:before {
+                display: block;
+            }*/
+
+/* Sidebar.css */
+
+* {
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background: #f5f6fa;
+    transition: margin-left 0.5s;
+}
+
+
+.wrapper .sidebar {
+    background: #21263C; /*/*#181C2E rgb(5, 68, 104);*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 12rem;
+    height: 100%;
+    padding: 15px 0;
+    transition: all 0.5s ease;
+    overflow-y: auto;
+}
+
+.sidebar {
+    z-index: 1;
+    transition: width 0.3s ease;
+    width: 12rem;
+    position: relative;
+}
+
+    .sidebar.collapsed {
+        width: 4rem; /* Adjust as needed */
+    }
+
+.profile img {
+    transition: opacity 0.3s ease;
+}
+
+.profile h3, .profile p {
+    transition: opacity 0.3s ease;
+}
+
+/* Optionally hide profile details when collapsed */
+.sidebar.collapsed .profile img,
+.sidebar.collapsed .profile h3,
+.sidebar.collapsed .profile p {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.sidebar.collapsed .icon {
+    font-size: 22px !important; /* Adjust to your preference */
+    margin-right: 12px;
+}
+
+    .wrapper .sidebar .profile {
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+        .wrapper .sidebar .profile img {
+            display: block;
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+
+
+        .wrapper .sidebar .profile h3 {
+            color: #ffffff;
+            margin: 15px 0 3px; /* Increased margins */
+            font-size: 0.7rem; /* Increased font size */
+        }
+
+        .wrapper .sidebar .profile p {
+            color: rgb(206, 240, 253);
+            font-size: 0.9rem; /* Increased font size */
+        }
+
+    .wrapper .sidebar ul li a {
+        display: block;
+        padding: 10px 23px; /* Increased padding */
+        border-bottom: 2px solid #10558d; /* Increased border size */
+        color: rgb(241, 237, 237);
+        font-size: 25px; /* Increased font size */
+        position: relative;
+        white-space: nowrap;
+        overflow: hidden; /* or scroll */
+        /*text-overflow: ellipsis;*/
+    }
+
+        .wrapper .sidebar ul li a .icon {
+            color: #dee4ec;
+            width: 25px; /* Increased icon width */
+            display: inline-block;
+            font-size: 15px; /* Increased icon size */
+        }
+
+        .wrapper .sidebar ul li a:hover,
+        .wrapper .sidebar ul li a.active {
+            color: #0c7db1;
+            background: #181C2E;
+            border-right: 3px solid rgb(5, 68, 104); /* Increased border size */
+        }
+.item {
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden; /* or scroll */
+    text-overflow: ellipsis;
+}
+
+.static-icon {
+    position: fixed; /* Fixes the icon position */
+    bottom: 10px; /* Distance from the bottom */
+    left: 20px; /* Distance from the left, adjust as needed */
+    z-index: 0; /* Ensures it's on top */
+    color:white;
+}
+.wrapper .section {
+    width: 1366px; /* Adjusted width */
+    margin-left: 0px; /* Adjusted margin */
+    transition: all 0.5s ease;
+}
+
+    .wrapper .section .top_navbar {
+        background: #FCFFEC;
+        height: 2.5rem; /* Increased height */
+        display: flex;
+        align-items: center;
+        padding: 0 38px; /* Increased padding */
+    }
+    .top_navbar{
+        position:fixed;
+    }
+
+        .wrapper .section .top_navbar .hamburger a {
+            font-size: 1em !important; /* Increased font size */
+            color: #f4fbff;
+        }
+
+.FaAngleDown {
+    /*margin-left: 190px !important;*/
+    margin-left: clamp(190px, 80vw + 190px, 897px) !important;
+}
+
+.FaBars {
+    /*margin-left: 35px !important;*/
+    margin-left: clamp(35px, 80vw + 35px, 169px) !important;
+}
+/*Standard width form media query*/
+/* Small Mobile */
+@media (max-width: 320px) {
+    /* Styles for small mobile devices */
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    /* Styles for mobile devices */
+}
+/* Mobile */
+@media (max-width: 505px) {
+    /* Styles for mobile devices */
+    .wrapper .section .top_navbar {
+        height: 2rem; /* Increased height */
+        width:100%;
+    
+        /*padding: 0 30% !important;*/ /* Increased padding */
+    }
+    .FaAngleDown {
+        margin-left: 190px !important;
+    }
+    .FaBars {
+        margin-left: 35px !important;
+    }
+    .RightSideIcon{
+        margin-left:30px !important;
+    }
+    .wrapper .section .top_navbar .hamburger a {
+        font-size: 0.8em !important; /* Increased font size */
+    }
+
+}
+
+@media (min-width: 1362px) {
+
+    .wrapper .section .top_navbar {
+        /*height: 2rem;*/ /* Increased height */
+        /*width: 100%;*/
+        /*padding: 0 30% !important;*/ /* Increased padding */
+    }
+
+    .FaAngleDown {
+        margin-left: 897px !important;
+    }
+
+    .FaBars {
+        margin-left: 169px !important;
+    }
+
+    .RightSideIcon {
+        margin-left: 30px !important;
+    }
+
+    .wrapper .section .top_navbar .hamburger a {
+        /*font-size: 0.8em !important;*/ /* Increased font size */
+    }
+}
+
+
+/* Small Tablet */
+@media (max-width: 600px) {
+    /* Styles for small tablets */
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+
+
+    }
+
+/* Small Laptop */
+@media (max-width: 1024px) {
+
+}
+
+/* Desktop */
+@media (max-width: 1280px) {
+
+}
+
+/* Large Desktop */
+@media (max-width: 1440px) {
+
+}
+
+/* Extra Large Desktop */
+@media (max-width: 1920px) {
+
+}
+
+
+
+
+
+
+@media screen and (max-width: 1366px) {
+    .wrapper .section .top_navbar .hamburger a {
+        font-size: 1.3em; /* Increased font size */
+
+    }
+
+}
+
+/* Media query for screens smaller than 480px */
+@media screen and (max-width: 768px) {
+    .wrapper .section .top_navbar .hamburger a {
+        font-size: 0.3em; /* Increased font size */
+    }
+}
+@media screen and (max-width: 800px) {
+    .sidebar.collapsed {
+        width: 4rem; /* Adjust as needed */
+    }
+}
+
+
+body.active .wrapper .sidebar {
+    left: -305px; /* Adjusted for new sidebar width */
+}
+
+body.active .wrapper .section {
+    margin-left: 0;
+    width: 20%;
+}
+
+
+
+    .wrapper .sidebar ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Optional: style the scrollbar (for Webkit browsers) */
+    .wrapper .sidebar::-webkit-scrollbar {
+        width: 5px; /* Width of the scrollbar */
+    }
+
+    .wrapper .sidebar::-webkit-scrollbar-thumb {
+        background: #159AFF; /* Color of the scrollbar thumb */
+        border-radius: 1px; /* Round the corners of the scrollbar thumb */
+    }
+
+        .wrapper .sidebar::-webkit-scrollbar-thumb:hover {
+            background: #aaa; /* Color when hovering over the scrollbar thumb */
+        }
+
+
+/*social media icons*/
+
+.wrapperL {
+    display: inline-flex;
+    list-style: none;
+}
+
+    .wrapperL .icon {
+        position: relative;
+        background: #ffffff;
+        border-radius: 50%;
+        padding: 15px;
+        margin: 10px;
+        width: 2px;
+        height: 2px;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .wrapperL .tooltip {
+        position: absolute;
+        top: 0;
+        font-size: 14px;
+        background: #ffffff;
+        color: #ffffff;
+        padding: 5px 8px;
+        border-radius: 5px;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+        .wrapperL .tooltip::before {
+            position: absolute;
+            content: "";
+            height: 8px;
+            width: 8px;
+            background: #ffffff;
+            bottom: -3px;
+            left: 50%;
+            transform: translate(-50%) rotate(45deg);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+    .wrapperL .icon:hover .tooltip {
+        top: -45px;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .wrapperL .icon:hover span,
+    .wrapperL .icon:hover .tooltip {
+        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .wrapperL .facebook:hover,
+    .wrapperL .facebook:hover .tooltip,
+    .wrapperL .facebook:hover .tooltip::before {
+        background: #1877F2;
+        color: #ffffff;
+    }
+
+    .wrapperL .twitter:hover,
+    .wrapperL .twitter:hover .tooltip,
+    .wrapperL .twitter:hover .tooltip::before {
+        background: #1DA1F2;
+        color: #ffffff;
+    }
+
+    .wrapperL .instagram:hover,
+    .wrapperL .instagram:hover .tooltip,
+    .wrapperL .instagram:hover .tooltip::before {
+        background: #E4405F;
+        color: #ffffff;
+    }
+
+    .wrapperL .github:hover,
+    .wrapperL .github:hover .tooltip,
+    .wrapperL .github:hover .tooltip::before {
+        background: #333333;
+        color: #ffffff;
+    }
+
+    .wrapperL .youtube:hover,
+    .wrapperL .youtube:hover .tooltip,
+    .wrapperL .youtube:hover .tooltip::before {
+        background: #CD201F;
+        color: #ffffff;
+    }
+
+    .wrapperL .gmail:hover,
+    .wrapperL .gmail:hover .tooltip,
+    .wrapperL .gmail:hover .tooltip::before {
+        background: #CD201F;
+        color: #ffffff;
+    }
+
+.image-shadow {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Customize the shadow properties here */
+}
+
+
+
+
+
+.wrapperS {
+    display: inline-flex;
+    list-style: none;
+}
+
+    .wrapperS .icon {
+        position: relative;
+        background: #ffffff;
+        border-radius: 50%;
+        padding: 21px;
+        margin: -15px;
+        width: 136px;
+        height: 110px;
+        font-size: 59px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        margin-left: 20%;
+        margin-top:10%;
+    }
+
+    .wrapperS .tooltip {
+        position: absolute;
+        top: 0;
+        font-size: 37px;
+        background: #ffffff;
+        color: #ffffff;
+        padding: 18px 21px;
+        border-radius: 10px;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+        .wrapperS .tooltip::before {
+            position: absolute;
+            content: "";
+            height: 8px;
+            width: 8px;
+            background: #ffffff;
+            bottom: -3px;
+            left: 50%;
+            transform: translate(-50%) rotate(45deg);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+    .wrapperS .icon:hover .tooltip {
+        top: -120px;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .wrapperS .icon:hover span,
+    .wrapperS .icon:hover .tooltip {
+        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .wrapperS .facebook:hover,
+    .wrapperS .facebook:hover .tooltip,
+    .wrapperS .facebook:hover .tooltip::before {
+        background: #1877F2;
+        color: #ffffff;
+    }
+
+    .wrapperS .twitter:hover,
+    .wrapperS .twitter:hover .tooltip,
+    .wrapperS .twitter:hover .tooltip::before {
+        background: #1DA1F2;
+        color: #ffffff;
+    }
+
+    .wrapperS .instagram:hover,
+    .wrapperS .instagram:hover .tooltip,
+    .wrapperS .instagram:hover .tooltip::before {
+        background: #E4405F;
+        color: #ffffff;
+    }
+
+    .wrapperS .github:hover,
+    .wrapperS .github:hover .tooltip,
+    .wrapperS .github:hover .tooltip::before {
+        background: #333333;
+        color: #ffffff;
+    }
+
+    .wrapperS .youtube:hover,
+    .wrapperS .youtube:hover .tooltip,
+    .wrapperS .youtube:hover .tooltip::before {
+        background: #CD201F;
+        color: #ffffff;
+    }
+
+    .wrapperS .gmail:hover,
+    .wrapperS .gmail:hover .tooltip,
+    .wrapperS .gmail:hover .tooltip::before {
+        background: #CD201F;
+        color: #ffffff;
+    }
+
+.image-shadow {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Customize the shadow properties here */
+}
+
+
+/*Alert box*/
+.alert-box {
+    position: fixed; /* Use fixed positioning */
+    top: 20px; /* Distance from the top */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust to perfectly center */
+    z-index: 1000; /* Ensure it's on top of other elements */
+    padding: 7px 20px; /* Padding for the box */
+    border-radius: 5px; /* Rounded corners */
+    color: white; /* Text color */
+    display: flex; /* Flex for alignment */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between text and button */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    width: auto; /* Allow it to grow with the message */
+    max-width: 90%; /* Maximum width to prevent overflow */
+    transition: all 0.3s ease;
+}
+
+.alert-message {
+    flex-grow: 1; /* Allow message to take available space */
+    margin-right: 15px; /* Space between message and button */
+    font-size: 14px; /* Font size for readability */
+    font-family: 'Merriweather', Georgia, serif;
+}
+
+.alert-box.success {
+    background-color: #28a745; /* Green */
+}
+
+.alert-box.error {
+    background-color: #dc3545; /* Red */
+}
+
+.alert-box.warning {
+    background-color: #ffc107; /* Yellow */
+    color: black; /* Text color for warning */
+}
+
+.close-button {
+    background: none; /* Remove background */
+    border: none; /* Remove border */
+    color: white; /* Button text color */
+    font-size: 20px; /* Larger font for visibility */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: color 0.3s ease; /* Transition effect for hover */
+}
+
+    .close-button:hover {
+        color: #ffcc00; /* Change color on hover */
+    }
+
+

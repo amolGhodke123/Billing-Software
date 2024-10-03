@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import { FaFacebookF, FaTwitter, FaInstagram, FaGithub, FaYoutube } from 'react-icons/fa';
+import { useAlert } from '../AlertBox/AlertContext';
+import axios from 'axios';
 
 Modal.setAppElement('#root');
 
@@ -7,12 +10,19 @@ function SignUp({ onSignUpClick }) {
     const [isOpen, setIsOpen] = useState(true);
     const [modalIsOpen, setModalIsOpen] = useState(true);
     const [formData, setFormData] = useState({
-        field1: '',
-        field2: '',
-        field3: '',
-        field4: '',
-        field5: '',
+        companyName: '',
+        phoneNo: '',
+        emailId: '',
+        password: '',
+        countryName: '',
     });
+    const [isChecked, setIsChecked] = useState(false);
+    const showAlert = useAlert();
+
+    const handleCheckboxChange = () => {
+        setIsChecked(!isChecked); // Toggle the checked state
+    };
+
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -21,8 +31,65 @@ function SignUp({ onSignUpClick }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Form Data Submitted:', formData);
-        setModalIsOpen(false);
+        debugger
+      
+        const companyName = formData.companyName.trim();
+        const phoneNo = formData.phoneNo.trim();
+        const emailId = formData.emailId.trim();
+        const password = formData.password.trim();
+        const countryName = formData.countryName.trim();
+
+        if (companyName === '')
+        {
+            showAlert('warning', 'Please enter company name.');
+
+        }
+        else if (phoneNo === '') 
+        {
+            showAlert('warning', 'Please enter phone no.');
+
+        }
+        else if (emailId === '') 
+        {
+            showAlert('warning', 'Please enter email id.');
+        }
+        else if (password === '') 
+        {
+            showAlert('warning', 'Please enter password.');
+        }
+        else if (countryName === '') 
+        {
+            showAlert('warning', 'Please enter country name.');
+        }
+        else if (!isChecked)
+        {
+            showAlert('warning', 'Please agree to the Terms of Service and Privacy Policy..');
+
+        }
+        else
+        {
+            axios.post('https://www.billing.somee.com/api/Login/RegisterUser', {
+                "userName": emailId,
+                "emailId": emailId,
+                "password": password,
+                "phoneNo": phoneNo,
+                "companyName": companyName,
+                "countryName": countryName,
+                "salt": "amol"
+                })
+                    .then(response => {
+                        if (response.data.message === 'User Registered Successfully') {
+                            showAlert('success', 'Registration successfully!');
+                            handleChangeParentState();
+                        } else {
+                            showAlert('warning', 'Registration failed!')
+                        }
+                    })
+                .catch(error => {
+                    //console.error('Login failed:', error.response.data.message);
+                    showAlert('warning', error.response.data.message)
+                    });
+            }
     };
 
 
@@ -61,99 +128,58 @@ function SignUp({ onSignUpClick }) {
                                     <form onSubmit={handleSubmit}>
                                         <input
                                             type="text"
-                                            name="field1"
-                                            value={formData.field1}
+                                            name="companyName"
+                                            value={formData.companyName}
                                             onChange={handleInputChange}
-                                            placeholder="Company Name"
-                                            required
+                                            placeholder="Company Name*"
+                                            className="input-fieldS"
+                                        />
+                                        <input
+                                            type="number"
+                                            name="phoneNo"
+                                            value={formData.phoneNo}
+                                            onChange={handleInputChange}
+                                            placeholder="Phone Number*"
                                             className="input-fieldS"
                                         />
                                         <input
                                             type="text"
-                                            name="field2"
-                                            value={formData.field2}
+                                            name="emailId"
+                                            value={formData.emailId}
                                             onChange={handleInputChange}
-                                            placeholder="Phone Number"
-                                            required
+                                            placeholder="Email Address*"
+                                            className="input-fieldS"
+                                        />
+                                        <input
+                                            type="password"
+                                            name="password"
+                                            value={formData.password}
+                                            onChange={handleInputChange}
+                                            placeholder="Password*"
                                             className="input-fieldS"
                                         />
                                         <input
                                             type="text"
-                                            name="field3"
-                                            value={formData.field3}
+                                            name="countryName"
+                                            value={formData.countryName}
                                             onChange={handleInputChange}
-                                            placeholder="Email Address"
-                                            required
-                                            className="input-fieldS"
-                                        />
-                                        <input
-                                            type="text"
-                                            name="field4"
-                                            value={formData.field4}
-                                            onChange={handleInputChange}
-                                            placeholder="Password"
-                                            required
-                                            className="input-fieldS"
-                                        />
-                                        <input
-                                            type="text"
-                                            name="field5"
-                                            value={formData.field5}
-                                            onChange={handleInputChange}
-                                            placeholder="Country"
-                                            required
+                                            placeholder="Country*"
                                             className="input-fieldS"
                                         />
                                         <div className="custom-div">
                                             Your data will be in INDIA data center. 
                                         </div>
                                         <div className="custom-div1">
-                                            <input type="checkbox" id="dataCheckbox"/>
+                                            <input type="checkbox" id="dataCheckbox" checked={isChecked}
+                                                onChange={handleCheckboxChange} />
                                             I agree to the<span className="highlight"> Terms of Service </span>and <span className="highlight"> Privacy Policy</span>.
                                         </div>
 
                                         <button type="submit" className="signup-btnS">Create Free Account</button>
                                         <div className="popup-titleS">Already have a account?<span className="highlight" onClick={handleChangeParentState}> Sign In </span></div>
-
-                                        {/*<button type="button" onClick={() => setModalIsOpen(false)} className="close-btnS">Close</button>*/}
                                     </form>
                                 </Modal>
                             </div>
-
-                            {/*<div className="popup1">*/}
-                            {/*    <form>*/}
-                            {/*        <div className="form-group1">*/}
-                            {/*            <input*/}
-                            {/*                type="text"*/}
-                            {/*                id="username"*/}
-                            {/*                placeholder="Username"*/}
-                            {/*                className="input-field1"*/}
-                            {/*                required*/}
-                            {/*            />*/}
-                            {/*        </div>*/}
-                            {/*        <div className="form-group1">*/}
-                            {/*            <input*/}
-                            {/*                type="email"*/}
-                            {/*                id="email"*/}
-                            {/*                placeholder="Email"*/}
-                            {/*                className="input-field1"*/}
-                            {/*                required*/}
-                            {/*            />*/}
-                            {/*        </div>*/}
-                            {/*        <div className="form-group1">*/}
-                            {/*            <input*/}
-                            {/*                type="password"*/}
-                            {/*                id="password"*/}
-                            {/*                placeholder="Password"*/}
-                            {/*                className="input-field1"*/}
-                            {/*                required*/}
-                            {/*            />*/}
-                            {/*        </div>*/}
-                            {/*        <button type="submit" className="signup-btn">*/}
-                            {/*            Sign Up*/}
-                            {/*        </button>*/}
-                            {/*    </form>*/}
-                            {/*</div>*/}
                         </div>
                     )}
                 </div>
@@ -163,3 +189,7 @@ function SignUp({ onSignUpClick }) {
 }
 
 export default SignUp;
+
+
+
+

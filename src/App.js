@@ -1,13 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
 import Login from './Components/LoginPage/Login';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
+import { AlertProvider } from './Components/AlertBox/AlertContext';
+
+
+
+
 
 
 function App() {
     return (
-        <>
-            <Login/>
+        <>  <AlertProvider>
+            <Login />
+        </AlertProvider>
         </>
     //<div className="App">
     //  <header className="App-header">
