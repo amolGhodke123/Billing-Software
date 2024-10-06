@@ -3,7 +3,11 @@
     "",
     "\\src",
     "\\src\\Components",
-    "\\src\\Components\\AlertBox"
+    "\\src\\Components\\AlertBox",
+    "\\src\\Components\\HomePage",
+    "\\src\\Components\\HomePage\\Customer",
+    "\\src\\Components\\LoginPage"
   ],
+  "SelectedNode": "\\src\\Components\\HomePage\\Customer\\Customer.jsx",
   "PreviewInSolutionExplorer": false
 }

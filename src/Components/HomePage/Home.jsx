@@ -3,12 +3,15 @@ import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { FaChartPie, FaChartLine, FaCalendarAlt, FaBook, FaHome, FaUsers, FaAngleDown, FaFileAlt, FaMoneyBillWave, FaClock, FaClipboardList, FaCog, FaShieldAlt, FaBars, FaRegBell, FaUser, FaTh, FaSignOutAlt } from 'react-icons/fa';
 import { useAlert } from '../AlertBox/AlertContext';
 import { useEffect } from 'react';
+import Customer from './Customer/Customer';
 
 
 const Home = ({ onSignUpClick }) => {
     const [navVisible, setNavVisible] = useState(false);
     const [iconToggle, setIconToggle] = useState(false);
     const [isActive, setIsActive] = useState(false);
+    const [section, setSection] = useState('Home'); // Default section
+
     const showAlert = useAlert();
 
     useEffect(() => {
@@ -43,7 +46,7 @@ const Home = ({ onSignUpClick }) => {
      
 
     return (
-
+        <>
         <div className="wrapper">
             <div className={`wrapper ${isActive ? 'active' : ''}`}>
                 {/*<h1 style={{ marginLeft: isActive ? '0' : '225px', transition: 'margin-left 0.5s' }}>*/}
@@ -69,7 +72,7 @@ const Home = ({ onSignUpClick }) => {
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="#" onClick={() => setSection('Customers')}>
                             <span className="icon">
                                 <FaUsers />
                             </span>
@@ -171,8 +174,8 @@ const Home = ({ onSignUpClick }) => {
 
             </div>
             <div className="section">
-                <div className="top_navbar">
-                    <div className="hamburger">
+                    <div className="top_navbar">
+                        <div className="hamburger" style={{ marginTop:'5px' }}>
 
                         <a href="#" onClick={toggleNavbar}>
                             <FaBars style={{ color: '#181C2E', marginLeft: navVisible ? '4rem' : '11rem', transition: 'all 0.5s ease' }} className="FaBars" />
@@ -183,9 +186,20 @@ const Home = ({ onSignUpClick }) => {
                         </a>
                         {/*<a style={{ marginLeft: '120vh' }} className="popup-titleN">Sikka Software</a>*/}
                         <a href="#">
-                            <FaAngleDown style={{ color: '#181C2E', marginLeft: '55rem' }} className="FaAngleDown" />
+                            <span style={{ color: '#181C2E', marginLeft: '55rem' }} className="FaAngleDown Home-text">Amol</span>
+
+                            <FaAngleDown style={{color: '#181C2E',marginLeft: '0.4rem',display: 'inline-block',verticalAlign: 'middle',}} className="angle-down"/>
+
+                            {/* Add Button */}
+
+                            <button className="add-button">
+                                <span className="add-sign">+</span>
+                            </button>
+                         
 
                         </a>
+
+                   
                         <a href="#">
                             <FaRegBell style={{ color: '#181C2E', marginLeft: '1.7rem' }} className="RightSideIcon" />
 
@@ -204,87 +218,19 @@ const Home = ({ onSignUpClick }) => {
 
                         </a>
                     </div>
+                    </div>
+
                 </div>
-            </div>
+                <div style={{ paddingTop: '50px', marginLeft: navVisible ? '80px' : '200px', transition: 'all 0.5s ease' }}>
+                   
+                    {section === "Customers" && <Customer />}
+
+                </div>
+
         </div>
 
-        //<div class="wrapper">
-        //    <div class="sidebar">
-        //        <ul>
-        //            <li>
-        //                <a href="#" class="active">
-        //                    <span class="icon"><i class="fas fa-home"></i></span>
-        //                    <span class="item">Home</span>
-        //                </a>
-        //            </li>
-        //            <li>
-        //                <a href="#">
-        //                    <span class="icon"><i class="fas fa-desktop"></i></span>
-        //                    <span class="item">My Dashboard</span>
-        //                </a>
-        //            </li>
-        //            <li>
-        //                <a href="#">
-        //                    <span class="icon"><i class="fas fa-user-friends"></i></span>
-        //                    <span class="item">People</span>
-        //                </a>
-        //            </li>
-        //            <li>
-        //                <a href="#">
-        //                    <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
-        //                    <span class="item">Perfomance</span>
-        //                </a>
-        //            </li>
-        //            <li>
-        //                <a href="#">
-        //                    <span class="icon"><i class="fas fa-database"></i></span>
-        //                    <span class="item">Development</span>
-        //                </a>
-        //            </li>
-        //            <li>
-        //                <a href="#">
-        //                    <span class="icon"><i class="fas fa-chart-line"></i></span>
-        //                    <span class="item">Reports</span>
-        //                </a>
-        //            </li>
-        //            <li>
-        //                <a href="#">
-        //                    <span class="icon"><i class="fas fa-user-shield"></i></span>
-        //                    <span class="item">Admin</span>
-        //                </a>
-        //            </li>
-        //            <li>
-        //                <a href="#">
-        //                    <span class="icon"><i class="fas fa-cog"></i></span>
-        //                    <span class="item">Settings</span>
-        //                </a>
-        //            </li>
-        //        </ul>
-        //    </div>
 
-        //</div>
-        //<div className="sidebar-container">
-        //    <Sidebar className="custom-sidebar" onToggle={toggleNavbar}>
-        //        <Menu>
-        //            <SubMenu label="Charts" icon={<FaChartPie />} className="custom-submenu">
-        //                <MenuItem icon={<FaChartLine />}>Pie Charts</MenuItem>
-        //                <MenuItem icon={<FaChartLine />}>Line Charts</MenuItem>
-        //            </SubMenu>
-        //            <MenuItem icon={<FaBook />} className="custom-menu-item">Documentation</MenuItem>
-        //            <MenuItem icon={<FaCalendarAlt />} className="custom-menu-item">Calendar</MenuItem>
-        //            <MenuItem icon={<FaHome />} className="custom-menu-item">Home</MenuItem>
-        //            <MenuItem icon={<FaHome />} className="custom-menu-item">Home</MenuItem>
-        //            <MenuItem icon={<FaHome />} className="custom-menu-item">Home</MenuItem>
-        //            <MenuItem icon={<FaHome />} className="custom-menu-item">Home</MenuItem>
-        //            <MenuItem icon={<FaHome />} className="custom-menu-item">Home</MenuItem>
-        //            <MenuItem icon={<FaHome />} className="custom-menu-item">Home</MenuItem>
-        //            <MenuItem icon={<FaHome />} className="custom-menu-item">Home</MenuItem>
-        //            <MenuItem icon={<FaHome />} className="custom-menu-item">Home</MenuItem>
-        //            <MenuItem icon={<FaHome />} className="custom-menu-item">Home</MenuItem>
-        //            <MenuItem icon={<FaHome />} className="custom-menu-item">Home</MenuItem>
-        //        </Menu>
-        //    </Sidebar>
-        //</div>
+       </>
     );
 };
 
